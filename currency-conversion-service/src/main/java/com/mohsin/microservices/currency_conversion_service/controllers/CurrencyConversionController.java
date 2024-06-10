@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("currency-conversion")
@@ -27,14 +29,23 @@ public class CurrencyConversionController {
             @PathVariable String toCurrency,
             @PathVariable BigDecimal quantity
     ) {
-        var currencyConversion = new CurrencyConversion(1L, fromCurrency, toCurrency, quantity);
+        // Invoking currency exchange service
+        var uriVariables = new HashMap<String, String>();
+        uriVariables.put("fromCurrency", fromCurrency);
+        uriVariables.put("toCurrency", toCurrency);
+
+        var response = new RestTemplate().getForEntity(
+                "http://localhost:8000/currency-exchange/from/{fromCurrency}/to/{toCurrency}",
+                CurrencyConversion.class,
+                uriVariables
+        );
+
+        var currencyConversion = response.getBody();
         if (currencyConversion == null) {
             throw new RuntimeException("Unable to find data for " + fromCurrency + " to " + toCurrency);
         }
-        currencyConversion.setConversionMultiple(BigDecimal.valueOf(10.0));
-        currencyConversion.setTotalCalculatedAmount(currencyConversion.getConversionMultiple().multiply(currencyConversion.getQuantity()));
-        String port = environment.getProperty("local.server.port");
-        currencyConversion.setEnvironment(port);
+        currencyConversion.setQuantity(quantity);
+        currencyConversion.setTotalCalculatedAmount(currencyConversion.getConversionMultiple().multiply(quantity));
         return currencyConversion;
     }
 }
