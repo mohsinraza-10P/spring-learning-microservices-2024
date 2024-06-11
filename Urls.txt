@@ -13,10 +13,15 @@ Currency Conversion Service:
 http://localhost:8100/currency-conversion/from/USD/to/PKR/quantity/1
 http://localhost:8100/currency-conversion-feign/from/USD/to/PKR/quantity/2
 
-Eureka:
+Eureka (Naming Server):
 http://localhost:8761/
 
-Api Gateway:
+Api Gateway (Includes common functionalities like auth, logging, etc):
 http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/PKR
 http://localhost:8765/currency-conversion-service/currency-conversion/from/USD/to/PKR/quantity/1
 http://localhost:8765/currency-conversion-service/currency-conversion-feign/from/USD/to/PKR/quantity/2
+
+Custom Routes:
+http://localhost:8765/currency-exchange/from/USD/to/PKR
+http://localhost:8765/currency-conversion/from/USD/to/PKR/quantity/1
+http://localhost:8765/currency-conversion-feign/from/USD/to/PKR/quantity/2
