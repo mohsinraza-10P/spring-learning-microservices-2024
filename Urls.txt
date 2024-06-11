@@ -15,3 +15,6 @@ http://localhost:8100/currency-conversion-feign/from/USD/to/PKR/quantity/1
 
 Eureka:
 http://localhost:8761/
+
+Api Gateway:
+http://localhost:8765/
