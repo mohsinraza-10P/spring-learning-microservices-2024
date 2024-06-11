@@ -11,10 +11,12 @@ http://localhost:8000/currency-exchange/from/USD/to/PKR
 
 Currency Conversion Service:
 http://localhost:8100/currency-conversion/from/USD/to/PKR/quantity/1
-http://localhost:8100/currency-conversion-feign/from/USD/to/PKR/quantity/1
+http://localhost:8100/currency-conversion-feign/from/USD/to/PKR/quantity/2
 
 Eureka:
 http://localhost:8761/
 
 Api Gateway:
-http://localhost:8765/
+http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/PKR
+http://localhost:8765/currency-conversion-service/currency-conversion/from/USD/to/PKR/quantity/1
+http://localhost:8765/currency-conversion-service/currency-conversion-feign/from/USD/to/PKR/quantity/2
