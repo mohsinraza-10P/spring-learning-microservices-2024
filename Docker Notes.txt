@@ -1,0 +1,32 @@
+Docker Image -> A static template, set of bytes.
+Docker Container -> A running version of your image
+
+hub.docker.com
+hub.docker.com/repository_name
+
+docker run -p {HostPort}:{ContainerPort} {image_name}
+docker run -p {HostPort}:{ContainerPort} -d {image_name} // Run in detached mode
+docker logs <id>
+docker logs -f <id>
+docker images
+docker tag {old_tag} {new_tag} // Same image id but diff tags
+docker pull {image_name}
+docker image history {imade_id}
+docker image inspect {imade_id}
+docker image remove  {imade_id} // Locally remove image
+docker container ls
+docker container ls -a
+docker container run -p {HostPort}:{ContainerPort} -d {image_name}
+docker container pause {container_id}
+docker container unpause {container_id}
+docker container inspect {container_id}
+docker container prune // Remove all stopped containers
+docker container logs -f {container_id}
+docker container stop {container_id} // Graceful shutdown
+docker container kill {container_id} // Immediately terminates the process
+docker run -p {HostPort}:{ContainerPort} -d --restart=always {image_name}
+docker events
+docker top {container_id}
+docker stats
+docker run -p {HostPort}:{ContainerPort} -m 512m --cpu-qouta 50000 -d {image_name}
+docker system df
