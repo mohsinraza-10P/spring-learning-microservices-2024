@@ -30,3 +30,7 @@ docker top {container_id}
 docker stats
 docker run -p {HostPort}:{ContainerPort} -m 512m --cpu-qouta 50000 -d {image_name}
 docker system df
+
+----------------
+
+docker run -p 9411:9411 openzipkin/zipkin:3.4.0

@@ -27,3 +27,6 @@ http://localhost:8765/currency-conversion/from/USD/to/PKR/quantity/1
 http://localhost:8765/currency-conversion-feign/from/USD/to/PKR/quantity/2
 
 watch -n 0.1 curl http://localhost:8000/sample-api
+
+Zipkin:
+http://localhost:9411/zipkin
