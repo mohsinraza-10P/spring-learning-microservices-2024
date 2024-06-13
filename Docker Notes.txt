@@ -33,4 +33,6 @@ docker system df
 
 ----------------
 
+Tracing of APIs using Zipkin
+Setup Zipkin via Docker:
 docker run -p 9411:9411 openzipkin/zipkin:3.4.0
